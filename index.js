@@ -1,12 +1,59 @@
 // bài 1 
 /**
- * lương 1 ngày: 100 000 $
- * lương = số ngày làm * 100 000 (lương 1 ngày) 
+    Điểm tổng kết = diem1 + diem2 + diem3 + điểm ưu tiên
+    Điểm ưu tiên - theo khu vực - 3 khu vực
+                 - theo đối tượng -3 đối tượng
+
+    Trúng tuyển = Điểm tổng >= Điểm chuẩn && diem1 > 0 && diem2 >0 && diem 3 >0
+
  */
-function tinhLuong(){
-    var soNgayLam = document.getElementById("inputBai1").value;
+function getKhuVuc(loaiKhuVuc){
+    diemCongKhuVuc = 0;
+    switch(loaiKhuVuc){
+        case "A":  diemCongKhuVuc = 2;
+        return diemCongKhuVuc;
+        case "B":  diemCongKhuVuc = 1;
+        return diemCongKhuVuc;
+        case "C":  diemCongKhuVuc = 0.5;
+        return diemCongKhuVuc;
+        default:  diemCongKhuVuc = 0;
+        return diemCongKhuVuc;
+    }
+}
+function getDoiTuong(loaiDoiTuong){
+     diemCongDoiTuong= 0;
+    switch(loaiDoiTuong){
+        case "1":  diemCongDoiTuong = 2.5;
+        return diemCongDoiTuong;
+        case "2":  diemCongDoiTuong = 1.5;
+        return diemCongDoiTuong;
+        case "3":  diemCongDoiTuong = 1;
+        return diemCongDoiTuong;
+        default:  diemCongDoiTuong = 0;
+        return diemCongDoiTuong;
+    }
+   
+}
+
+function TinhDiem(){
+    var diemChuan = document.getElementById("diem-chuan").value*1;
+    var khuVuc = document.querySelector("#khu-vuc").value;
+    var doiTuong = document.querySelector("#doi-tuong").value;
+    var diem1 = document.getElementById("bai1-diem1").value*1;
+    var diem2 = document.getElementById("bai1-diem2").value*1;
+    var diem3 = document.getElementById("bai1-diem3").value*1;
     var   result = document.getElementById("resultBai1");
-    result.innerHTML = `${Intl.NumberFormat('vn-VN').format(soNgayLam*100000)} VND` ;
+    diemKhuVuc = getKhuVuc(khuVuc);
+    diemDoiTuong = getDoiTuong(doiTuong);
+    
+    diemTongket = diem1 +diem2 + diem3 + diemKhuVuc + diemDoiTuong;
+    if(diem1 <=0 || diem2 <=0 || diem3 <=0){
+      result.innerHTML = `Bạn đã rớt. Do có điểm nhỏ hơn hoặc bằng 0` ;
+    }else{
+        diemTongket >= diemChuan ?  result.innerHTML = `Bạn đã ĐẬU. Điểm của bạn là: ${diemTongket} </br> Điểm cộng
+        khu vực: ${diemKhuVuc} </br> Điểm cộng đối tượng ưu tiên: ${diemDoiTuong}` 
+        : result.innerHTML = `Bạn đã RỚT do không đạt điểm chuẩn. Điểm của bạn là: ${diemTongket}`; 
+    }
 }
 // bài 2
 /**

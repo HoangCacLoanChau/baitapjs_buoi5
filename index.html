@@ -67,39 +67,74 @@
             >Bài 4</a
           >
         </li>
-        <li class="nav-item px-5">
-          <a
-            class="nav-link"
-            id="bai5-tab"
-            data-toggle="tab"
-            href="#bai5"
-            role="tab"
-            aria-controls="bai5"
-            aria-selected="false"
-            >Bài 5</a
-          >
-        </li>
       </ul>
       <div class="tab-content bg-light p-3" id="myTabContent">
         <div class="tab-pane fade show active" id="bai1" role="tabpanel" aria-labelledby="bai1-tab">
           <div class="card">
-            <div class="card-header text-danger">Tính tiền Lương nhân viên</div>
+            <h3 class="card-header text-danger">🏫 Quản lý tuyển sinh</h3>
             <div class="card-body">
-              <h5 class="card-title text-primary">Lương 1 ngày của nhân viên: 100,000 VND</h5>
               <div class="form">
-                <label for="soNgayLam">số ngày làm:</label>
-                <input
-                  label="số ngày làm"
-                  type="number"
-                  placeholder="số ngày làm"
-                  id="inputBai1"
-                  class="form__input p-2"
-                />
-                <button onclick="tinhLuong()" class="btn btn-success">Tính lương</button>
-              </div>
-              <div class="alert alert-success my-3 form__result fit-con">
-                <span>Lương của bạn là: </span>
-                <span id="resultBai1" class="text-danger"></span>
+                <div class="row">
+                  <div class="col-lg-4 col-md-6 py-2">
+                    <input
+                      type="number"
+                      placeholder="Điểm Chuẩn"
+                      id="diem-chuan"
+                      class="form__input form-control"
+                    />
+                  </div>
+                  <div class="col-lg-4 col-md-6 py-2">
+                    <select name="" id="khu-vuc" class="form__input form-control">
+                      <option value="">Chọn khu vực ưu tiên</option>
+                      <option value="x">X</option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                    </select>
+                  </div>
+                  <div class="col-lg-4 col-md-6 py-2">
+                    <select name="" id="doi-tuong" class="form__input form-control">
+                      <option value="">Chọn Đối Tượng</option>
+                      <option value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                    </select>
+                  </div>
+                  <div class="col-lg-4 col-md-6 py-2">
+                    <input
+                      type="number"
+                      placeholder="Điểm môn thứ 1"
+                      id="bai1-diem1"
+                      class="form__input form-control"
+                    />
+                  </div>
+                  <div class="col-lg-4 col-md-6 py-2">
+                    <input
+                      type="number"
+                      placeholder="Điểm môn thứ 2"
+                      id="bai1-diem2"
+                      class="form__input form-control"
+                    />
+                  </div>
+                  <div class="col-lg-4 col-md-6 py-2">
+                    <input
+                      type="number"
+                      placeholder="Điểm môn thứ 3"
+                      id="bai1-diem3"
+                      class="form__input form-control"
+                    />
+                  </div>
+                  <div class="col-lg-4 col-md-6 py-2">
+                    <button onclick="TinhDiem()" class="btn btn-success">Kết Quả</button>
+                  </div>
+                  <div class="col-12">
+                    <div class="alert alert-success my-3 form__result fit-con">
+                      <span>Kết Quả: </span>
+                      <span id="resultBai1" class="text-danger"></span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -214,27 +249,6 @@
                 <br />
                 <span>Diện tích hình chữ nhật là: </span>
                 <span id="dienTich" class="text-danger"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="tab-pane fade" id="bai5" role="tabpanel" aria-labelledby="bai5-tab">
-          <div class="card">
-            <div class="card-header text-danger">Tính tổng 2 ký số của 1 số</div>
-            <div class="card-body">
-              <div class="form">
-                <label for="soNgayLam">nhập số có 2 chữ số</label>
-                <input
-                  type="number"
-                  placeholder="số có 2 chữ số"
-                  id="inputBai5"
-                  class="form__input p-2"
-                />
-                <button onclick="tinhTong()" class="btn btn-success">Tính tổng</button>
-              </div>
-              <div class="alert alert-success my-3 form__result fit-con">
-                <span>Tổng 2 chữ số là: </span>
-                <span id="resultBai5" class="text-danger"></span>
               </div>
             </div>
           </div>
