@@ -1,3 +1,4 @@
+const kw50 = 500, kw50_100 = 650, kw100_200 = 850, kw200_350 = 1100, kwConlai = 1300;
 // bài 1 
 /**
     Điểm tổng kết = diem1 + diem2 + diem3 + điểm ưu tiên
@@ -58,19 +59,27 @@ function TinhDiem(){
 // bài 2
 /**
  * 
- * trungbinh5so = (so1 +so2 + so3 +so4 + so5 )/5
  */
 
-function tinhTrungBinh(){
-    var soMot = document.getElementById("inputBai2So1").value*1;
-    var soHai = document.getElementById("inputBai2So2").value*1;
-    var soBa = document.getElementById("inputBai2So3").value*1;
-    var soBon = document.getElementById("inputBai2So4").value*1;
-    var soNam = document.getElementById("inputBai2So5").value*1;
+function tinhTienDien(){
+    var soKw = document.getElementById("so-kw").value*1;
+    var hoTen = document.getElementById("ho-ten").value;
+    var tienDien = 0;
     var resultBai2 = document.getElementById("resultBai2");
-    var avg = (soMot + soHai + soBa + soBon +soNam ) / 5;
-    console.log("🚀 ~ tinhTrungBinh ~ avg:", avg)
-    resultBai2.innerHTML = avg;
+    if(soKw <= 50){
+        tienDien = soKw*kw50;
+    }
+    else if( soKw >50 && soKw <= 100){
+        tienDien = 50*kw50 + (soKw-50)*kw50_100;
+    }
+    else if(soKw >100 && soKw <= 200){
+        tienDien = 50*500 + 50*kw50_100 + (soKw-100)*kw100_200;
+    }else if( soKw >200 && soKw <350){
+        tienDien = 50*kw50 +50*kw50_100 + 100*kw100_200 + (soKw-200)*kw200_350;
+    }else{
+        tienDien = 50*kw50 +50*kw50_100 + 100*kw100_200 + 150*kw200_350 +(soKw-50-50-100-150)*kwConlai;
+    }
+    resultBai2.innerHTML = `Họ Tên: ${hoTen}. Tiền Điện: ${Intl.NumberFormat('vn-VN').format(tienDien)} VND`
 }
 
 //bài 3 

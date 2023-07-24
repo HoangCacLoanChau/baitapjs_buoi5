@@ -69,7 +69,7 @@
         </li>
       </ul>
       <div class="tab-content bg-light p-3" id="myTabContent">
-        <div class="tab-pane fade show active" id="bai1" role="tabpanel" aria-labelledby="bai1-tab">
+        <div class="tab-pane fade" id="bai1" role="tabpanel" aria-labelledby="bai1-tab">
           <div class="card">
             <h3 class="card-header text-danger">🏫 Quản lý tuyển sinh</h3>
             <div class="card-body">
@@ -139,59 +139,33 @@
             </div>
           </div>
         </div>
-        <div class="tab-pane fade" id="bai2" role="tabpanel" aria-labelledby="bai2-tab">
+        <div class="tab-pane fade show active" id="bai2" role="tabpanel" aria-labelledby="bai2-tab">
           <div class="card">
-            <div class="card-header text-danger">Tính giá trị trung bình của năm số</div>
+            <div class="card-header text-danger">Tính tiền điện</div>
             <div class="card-body">
-              <!-- <h5 class="card-title text-primary">Lương 1 ngày của nhân viên: 100000 $</h5> -->
               <div class="form">
                 <div class="row">
-                  <div class="col-lg-4 col-md-6 py-2">
+                  <div class="col-lg-6 py-2">
                     <input
-                      type="number"
-                      placeholder="số thứ nhất"
-                      id="inputBai2So1"
+                      type="text"
+                      placeholder="Nhập Họ Tên"
+                      id="ho-ten"
                       class="form__input p-2"
                     />
                   </div>
-                  <div class="col-lg-4 col-md-6 py-2">
+                  <div class="col-lg-6 py-2">
                     <input
                       type="number"
-                      placeholder="số thứ hai"
-                      id="inputBai2So2"
-                      class="form__input p-2"
-                    />
-                  </div>
-                  <div class="col-lg-4 col-md-6 py-2">
-                    <input
-                      type="number"
-                      placeholder="số thứ ba"
-                      id="inputBai2So3"
-                      class="form__input p-2"
-                    />
-                  </div>
-                  <div class="col-lg-4 col-md-6 py-2">
-                    <input
-                      type="number"
-                      placeholder="số thứ bốn"
-                      id="inputBai2So4"
-                      class="form__input p-2"
-                    />
-                  </div>
-                  <div class="col-lg-4 col-md-6 py-2">
-                    <input
-                      type="number"
-                      placeholder="số thứ năm"
-                      id="inputBai2So5"
+                      placeholder="Nhập số Kw"
+                      id="so-kw"
                       class="form__input p-2"
                     />
                   </div>
                 </div>
-                <button onclick="tinhTrungBinh()" class="btn btn-success">Tính Trung Bình</button>
+                <button onclick="tinhTienDien()" class="btn btn-success">Tính Tiền Điện</button>
               </div>
               <div class="alert alert-success my-3 form__result fit-con">
-                <span>Giá trị trung bình 5 số là: </span>
-                <span id="resultBai2" class="text-danger"></span>
+                <p id="resultBai2" class="text-danger"></p>
               </div>
             </div>
           </div>
