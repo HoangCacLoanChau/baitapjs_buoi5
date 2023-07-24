@@ -58,7 +58,8 @@ function TinhDiem(){
     }else{
         diemTongket >= diemChuan ?  result.innerHTML = `Bạn đã ĐẬU. Điểm của bạn là: ${diemTongket} </br> Điểm cộng
         khu vực: ${diemKhuVuc} </br> Điểm cộng đối tượng ưu tiên: ${diemDoiTuong}` 
-        : result.innerHTML = `Bạn đã RỚT do không đạt điểm chuẩn. Điểm của bạn là: ${diemTongket}`; 
+        : result.innerHTML = `Bạn đã RỚT do không đạt điểm chuẩn. Điểm của bạn là: ${diemTongket}  </br> Điểm cộng
+        khu vực: ${diemKhuVuc} </br> Điểm cộng đối tượng ưu tiên: ${diemDoiTuong}`; 
     }
 }
 // bài 2
@@ -93,11 +94,44 @@ function tinhTienDien(){
 //bài 3 
 /**
  */
-
 function tinhTienThue(){
-    var usd = document.getElementById("inputBai3").value;
-    var resultBai3 = document.getElementById("resultBai3");
-    resultBai3.innerHTML = `${Intl.NumberFormat('vn-VN').format(usd*23500)} VND`
+    var hoTen = document.getElementById("ho-ten-bai3").value;
+    var thuNhap = document.getElementById("thu-nhap").value*1;
+    var nguoiPhuThuoc = document.getElementById("nguoi-phu-thuoc").value*1;
+    var result = document.getElementById("resultBai3");
+    if( nguoiPhuThuoc < 0){
+        alert("Vui lòng nhập số hợp lệ");
+    } 
+    var tongThuNhap = thuNhap - 4e6 - 16e5*nguoiPhuThuoc;
+    var tienThue = 0;
+    if(0 <tongThuNhap && tongThuNhap <=6e7){
+        tienThue= tongThuNhap*0.05;
+    }
+    else if( tongThuNhap > 6e7 && tongThuNhap <= 12e7){
+        tienThue= tongThuNhap*0.10;
+    }
+    else if(tongThuNhap > 12e7 && tongThuNhap <= 21e7){
+       tienThue=  tongThuNhap*0.15;
+    }
+    else if(tongThuNhap > 21e7 && tongThuNhap <= 384e6){
+       tienThue=  tongThuNhap*0.2;
+    }
+    else if(tongThuNhap > 384e6 && tongThuNhap <= 624e6){
+       tienThue=  tongThuNhap*0.25;
+    }
+    else if(tongThuNhap > 624e6 && tongThuNhap <= 96e7){
+       tienThue=  tongThuNhap*0.3;
+    }
+    else if(tongThuNhap > 96e7){
+       tienThue = tongThuNhap*0.35;
+    }
+    else{
+        alert("Số tiền nhập không hợp lệ");
+
+    }
+    result.innerHTML = `Họ Tên: ${hoTen}. Tiền Thuế: ${Intl.NumberFormat('vn-VN').format(tienThue)} VND`
+
+    
 
 }
 // bài 4
