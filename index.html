@@ -139,7 +139,7 @@
             </div>
           </div>
         </div>
-        <div class="tab-pane fade show active" id="bai2" role="tabpanel" aria-labelledby="bai2-tab">
+        <div class="tab-pane fade" id="bai2" role="tabpanel" aria-labelledby="bai2-tab">
           <div class="card">
             <div class="card-header text-danger">Tính tiền điện</div>
             <div class="card-body">
@@ -170,59 +170,96 @@
             </div>
           </div>
         </div>
-        <div class="tab-pane fade" id="bai3" role="tabpanel" aria-labelledby="bai3-tab">
+        <div class="tab-pane fade show active" id="bai3" role="tabpanel" aria-labelledby="bai3-tab">
           <div class="card">
-            <div class="card-header text-danger">Quy đổi tiền</div>
+            <div class="card-header text-danger">Tính Thuế thu nhập cá nhân</div>
             <div class="card-body">
-              <h5 class="card-title text-primary">Giá USD hiện nay: 1 USD = 23.500 VND</h5>
               <div class="form">
-                <label for="soNgayLam">số tiền USD: </label>
-                <input
-                  type="number"
-                  placeholder="số tiền USD"
-                  id="inputBai3"
-                  class="form__input p-2"
-                />
-                <button onclick="quyDoi()" class="btn btn-success">Quy Đổi</button>
+                <div class="row">
+                  <div class="col-lg-4 py-2">
+                    <input
+                      type="text"
+                      placeholder="Nhập Họ Tên"
+                      id="ho-ten-bai3"
+                      class="form__input form-control p-2"
+                    />
+                  </div>
+                  <div class="col-lg-4 py-2">
+                    <input
+                      type="number"
+                      placeholder="Nhập số thu nhập cá nhân"
+                      id="thu-nhap"
+                      class="form__input form-control p-2"
+                    />
+                  </div>
+                  <div class="col-lg-4 py-2">
+                    <input
+                      type="number"
+                      placeholder="Số người phụ thuộc"
+                      id="thu-nhap"
+                      class="form__input form-control p-2"
+                    />
+                  </div>
+                  <div class="col-lg-4 py-2">
+                    <button onclick="tinhTienThue()" class="btn btn-success">Tính Tiền Thuế</button>
+                  </div>
+                </div>
               </div>
               <div class="alert alert-success my-3 form__result fit-con">
-                <span>Số tiền của bạn là: </span>
-                <span id="resultBai3" class="text-danger"></span>
+                <p id="resultBai3" class="text-danger"></p>
               </div>
             </div>
           </div>
         </div>
         <div class="tab-pane fade" id="bai4" role="tabpanel" aria-labelledby="bai4-tab">
           <div class="card">
-            <div class="card-header text-danger">Tính diện tích, chu vi hình chữ nhật</div>
+            <div class="card-header text-danger">Tính Tiền Cáp</div>
             <div class="card-body">
               <div class="form">
                 <div class="row">
-                  <div class="col-lg-6 py-2">
+                  <div class="col-lg-4 py-2">
+                    <select
+                      name=""
+                      id="loai-khach-hang"
+                      class="form__input form-control"
+                      onchange="khachhang()"
+                    >
+                      <option value="">Chọn Loại Khách Hàng</option>
+                      <option value="NhaDan">Nhà dân</option>
+                      <option value="DoanhNghiep">Doanh Nghiệp</option>
+                    </select>
+                  </div>
+                  <div class="col-lg-4 py-2">
                     <input
                       type="number"
-                      placeholder="chiều dài"
-                      id="chieudai"
-                      class="form__input p-2"
+                      placeholder="Mã Khách Hàng"
+                      id="ma-khach-hang"
+                      class="form__input form-control p-2"
                     />
                   </div>
-                  <div class="col-lg-6 py-2">
+                  <div class="col-lg-4 py-2">
                     <input
                       type="number"
-                      placeholder="chiều rộng"
-                      id="chieurong"
-                      class="form__input p-2"
+                      placeholder="Số Kênh cao cấp"
+                      id="so-kenh"
+                      class="form__input form-control p-2"
                     />
+                  </div>
+                  <div class="col-lg-4 py-2">
+                    <input
+                      type="number"
+                      placeholder="Số kết nối"
+                      id="so-ket-noi"
+                      class="form__input form-control p-2"
+                    />
+                  </div>
+                  <div class="col-lg-12 py-2">
+                    <button onclick="tinhTienCap()" class="btn btn-success">Tính tiền</button>
                   </div>
                 </div>
-                <button onclick="tinhCvDt()" class="btn btn-success">Tính</button>
               </div>
               <div class="alert alert-success my-3 form__result fit-con">
-                <span>Chu vi hình chữ nhật là: </span>
-                <span id="chuVi" class="text-danger"></span>
-                <br />
-                <span>Diện tích hình chữ nhật là: </span>
-                <span id="dienTich" class="text-danger"></span>
+                <span id="resultBai4" class="text-danger"></span>
               </div>
             </div>
           </div>

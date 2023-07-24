@@ -1,4 +1,5 @@
 const kw50 = 500, kw50_100 = 650, kw100_200 = 850, kw200_350 = 1100, kwConlai = 1300;
+const NHA_DAN ="NhaDan", DOANH_NGHIEP= "DoanhNghiep";
 // bài 1 
 /**
     Điểm tổng kết = diem1 + diem2 + diem3 + điểm ưu tiên
@@ -12,27 +13,31 @@ function getKhuVuc(loaiKhuVuc){
     diemCongKhuVuc = 0;
     switch(loaiKhuVuc){
         case "A":  diemCongKhuVuc = 2;
-        return diemCongKhuVuc;
+        break;
         case "B":  diemCongKhuVuc = 1;
-        return diemCongKhuVuc;
+        break;
         case "C":  diemCongKhuVuc = 0.5;
-        return diemCongKhuVuc;
+        break;
         default:  diemCongKhuVuc = 0;
-        return diemCongKhuVuc;
+        break;
     }
+    return diemCongKhuVuc;
+
 }
 function getDoiTuong(loaiDoiTuong){
      diemCongDoiTuong= 0;
     switch(loaiDoiTuong){
         case "1":  diemCongDoiTuong = 2.5;
-        return diemCongDoiTuong;
+        break;
         case "2":  diemCongDoiTuong = 1.5;
-        return diemCongDoiTuong;
+        break;
         case "3":  diemCongDoiTuong = 1;
-        return diemCongDoiTuong;
+        break;
         default:  diemCongDoiTuong = 0;
-        return diemCongDoiTuong;
+        break;
     }
+    return diemCongDoiTuong;
+
    
 }
 
@@ -66,7 +71,7 @@ function tinhTienDien(){
     var hoTen = document.getElementById("ho-ten").value;
     var tienDien = 0;
     var resultBai2 = document.getElementById("resultBai2");
-    if(soKw <= 50){
+    if(soKw>0 &&    soKw <= 50){
         tienDien = soKw*kw50;
     }
     else if( soKw >50 && soKw <= 100){
@@ -74,21 +79,22 @@ function tinhTienDien(){
     }
     else if(soKw >100 && soKw <= 200){
         tienDien = 50*500 + 50*kw50_100 + (soKw-100)*kw100_200;
-    }else if( soKw >200 && soKw <350){
+    }else if( soKw >200 && soKw <=350){
         tienDien = 50*kw50 +50*kw50_100 + 100*kw100_200 + (soKw-200)*kw200_350;
-    }else{
+    }else if(soKw > 350){
         tienDien = 50*kw50 +50*kw50_100 + 100*kw100_200 + 150*kw200_350 +(soKw-50-50-100-150)*kwConlai;
+    }
+    else{
+        alert("Vui lòng nhập số Kw hợp lệ");
     }
     resultBai2.innerHTML = `Họ Tên: ${hoTen}. Tiền Điện: ${Intl.NumberFormat('vn-VN').format(tienDien)} VND`
 }
 
 //bài 3 
 /**
- * 1usd = 23.500 VND
- * quydoi1Usd = 23.500 * so USD nhap vao
  */
 
-function quyDoi(){
+function tinhTienThue(){
     var usd = document.getElementById("inputBai3").value;
     var resultBai3 = document.getElementById("resultBai3");
     resultBai3.innerHTML = `${Intl.NumberFormat('vn-VN').format(usd*23500)} VND`
@@ -96,29 +102,37 @@ function quyDoi(){
 }
 // bài 4
 /**
- * Diện tích: dài x rộng
- * Chu vi: (dài + rộng) x 2
  */
-function tinhCvDt(){
-    var chieudai =document.getElementById("chieudai").value*1;
-    var chieurong =document.getElementById("chieurong").value*1;
-    var chuvi = document.getElementById("chuVi");
-    var dientich = document.getElementById("dienTich");
-    chuvi.innerHTML = (chieudai + chieurong) * 2;
-    dientich.innerHTML = chieudai * chieurong;
+var khachhang = function(){
+    var loaiKhachHang = document.querySelector("#loai-khach-hang").value;
+    var sknInput = document.getElementById("so-ket-noi");
+    if(loaiKhachHang == DOANH_NGHIEP){
+      sknInput.style.display="block";
+    }else{
+        sknInput.style.display ="none";
+    }
 }
+function tinhTienCap(){
+    var loaiKhachHang =document.querySelector("#loai-khach-hang").value;
+    var maKhachhang =document.getElementById("ma-khach-hang").value;
+    var soKenh = document.getElementById("so-kenh").value*1;
+    var soKetNoi = document.getElementById("so-ket-noi").value*1;
+    var result = document.getElementById("resultBai4");
+    var tongTienCap = 0;
+    switch(loaiKhachHang){
+        case NHA_DAN:
+        tongTienCap = 4.5 + 20.5 + 7.5*soKenh;
+        break;
+        case DOANH_NGHIEP:
+        soKetNoi <=10 ?
+        tongTienCap= 15 + 75 +50*soKenh :
+        tongTienCap = 15 + 75 + (soKenh-10)*5 + 50*soKenh;
+        break;
+        default:
+        alert("Vui lòng chọn loại khách hàng");
+    }
+    console.log("🚀 ~ tinhTienCap ~ tongTienCap:", tongTienCap)
 
-//bai 5 
-/**
- * hangdonvi = number chia lấy dư cho 10;
- * hangchuc = number chia 10 rồi làm tròn để lấy hàng chục;
- */
-function tinhTong(){
-    var number = document.getElementById("inputBai5").value*1;
-    var sum = document.getElementById("resultBai5");
-    console.log("🚀 ~ tinhTong ~ number:", number);
-    var hangDonVi = number %10;
-    var hangChuc = Math.floor(number / 10);
-    sum.innerHTML = hangDonVi + hangChuc;
-    
+    result.innerHTML= `Mã khách hàng: ${maKhachhang}. Tổng Tiền: ${Intl.NumberFormat("en-US",{
+    style: "currency",currency: "USD"}).format(tongTienCap)}`
 }
